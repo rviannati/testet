@@ -21,6 +21,8 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
         for(OpcaoParcelamentoRequest p : coberturaRequest.getOpcaoParcelamentoRequest()) {
             Response responseMaxima = calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMaximaParcelas(), p.getJuros());
             Response responseMinima = calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMinimaParcelas(), p.getJuros());
+            responses.add(responseMaxima);
+            responses.add(responseMinima);
         }
 
         return responses;
