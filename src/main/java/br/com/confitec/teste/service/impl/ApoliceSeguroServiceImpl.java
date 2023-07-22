@@ -69,10 +69,11 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
         double valorParcelaComResto = valorParcela + restoDivisao;
 
         Response response = Response.builder()
-                        .valorParcelamentoTotal(valorTotal)
-                                .quantidadeParcelas(quantidadeParcelas)
-                                        .valorPrimeiraParcela(valorParcelaComResto)
-                                                .valorDemaisParcelas(valorParcela).build();
+            .valorParcelamentoTotal(valorTotal)
+            .quantidadeParcelas(quantidadeParcelas)
+            .valorPrimeiraParcela(valorParcelaComResto)
+            .valorDemaisParcelas(valorParcela)
+            .build();
 
 
 
