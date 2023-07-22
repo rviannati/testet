@@ -25,12 +25,14 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
     public List<Response> obterParcelamento(CoberturaRequest coberturaRequest) throws Exception {
         List<Response> responses = new ArrayList<>();
 
-        for(OpcaoParcelamentoRequest p : coberturaRequest.getOpcaoParcelamentoRequest()) {
-            Response responseMaxima = calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMaximaParcelas(), p.getJuros());
-            Response responseMinima = calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMinimaParcelas(), p.getJuros());
-            responses.add(responseMaxima);
-            responses.add(responseMinima);
-        }
+        coberturaRequest.getOpcaoParcelamentoRequest().forEach(p -> {
+            try {
+                responses.add(calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMaximaParcelas(), p.getJuros()));
+                responses.add(calcularPlanoPagamento(coberturaRequest.getValor(), p.getQuantidadeMinimaParcelas(), p.getJuros()));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         return responses;
 
