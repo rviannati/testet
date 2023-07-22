@@ -11,6 +11,13 @@ import java.util.List;
 
 public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
 
+    private ApoliceSeguroService dataService;
+
+    public ApoliceSeguroServiceImpl(ApoliceSeguroService dataService) {
+        super();
+        this.dataService = dataService;
+    }
+
     private double valorTotal;
     private int quantidadeParcelas;
     private double taxaJuros;
