@@ -19,7 +19,7 @@ public class CalcularApoliceSeguroController {
 
         @PostMapping("/parcelamento")
         public ResponseEntity<List<Response>> parcelamento(@RequestBody CoberturaRequest coberturaRequest) throws Exception {
-            List<Response> aulas = apoliceSeguroService.obterParcelamento(coberturaRequest);
-            return ResponseEntity.ok(aulas);
+            List<Response> apolice = apoliceSeguroService.obterParcelamento(coberturaRequest);
+            return ResponseEntity.ok(apolice);
         }
 }
