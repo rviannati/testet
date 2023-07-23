@@ -33,9 +33,7 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
                 throw new RuntimeException(e);
             }
         });
-
         return responses;
-
     }
 
 
@@ -44,7 +42,6 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
         this.valorTotal = valorTotal;
         this.quantidadeParcelas = quantidadeParcelas;
         this.taxaJuros = taxaJuros;
-
 
         // Verificar se as entradas são válidas (não negativas)
         if (quantidadeParcelas <= 0 || taxaJuros < 0) {
@@ -70,9 +67,7 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
         return valorTotal / quantidadeParcelas;
     }
 
-    public Response gerarPlanoPagamento(double valorParcela) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        StringBuilder planoPagamento = new StringBuilder();
+    private Response gerarPlanoPagamento(double valorParcela) {     
 
         double restoDivisao = valorTotal % quantidadeParcelas;
         double valorParcelaComResto = valorParcela + restoDivisao;
@@ -83,10 +78,6 @@ public class ApoliceSeguroServiceImpl implements ApoliceSeguroService {
             .valorPrimeiraParcela(valorParcelaComResto)
             .valorDemaisParcelas(valorParcela)
             .build();
-
-
-
-
         return response;
     }
 }
